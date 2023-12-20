@@ -12,7 +12,7 @@ provider是一个状态管理管理的框架。
 
 ​	这是典型的生产-消费者模型，等同于观察者设计模式。
 
-![image-20231220141849212](./img\provider\design.png)
+![image-20231220141849212](./img/provider/design.png)
 
 
 
