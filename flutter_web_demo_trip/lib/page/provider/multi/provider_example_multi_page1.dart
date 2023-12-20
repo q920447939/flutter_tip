@@ -34,7 +34,7 @@ class _ProviderExampleMultiPage1State extends State<ProviderExampleMultiPage1> {
                           .increase();
                     },
                     child: Text(
-                      '点击增加数字',
+                      '数字+1',
                       style: TextStyle(
                         color: Colors.red,
                       ),

@@ -35,7 +35,7 @@ class _ProviderExampleMultiPage2State extends State<ProviderExampleMultiPage2> {
                       .reduce();
                 },
                 child: Text(
-                  '点击减少1',
+                  '数字-1',
                   style: TextStyle(
                     color: Colors.blueAccent,
                   ),
