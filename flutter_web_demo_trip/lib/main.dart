@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'page/animation/animated_positioned_page.dart';
 import 'page/provider/multi/provider_example_multi_page1.dart';
 import 'page/provider/theme/theme_provider.dart';
 
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
         (BuildContext context, ThemeProvider themeProvider, Widget? child) {
       return MaterialApp(
         title: 'Flutter Demo',
-        theme: themeProvider.isDark()
+        theme: !themeProvider.isDark()
             ? ThemeData(
                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
                 useMaterial3: true,
@@ -108,6 +109,9 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("App Name"),
+      ),
       body: ListView(
         children: [
           ExpansionTile(
@@ -165,6 +169,16 @@ class _HomePageState extends State<HomePage>
                   style: TextStyle(fontSize: 16),
                 ));
           }),
+          ExpansionTile(
+            title: Text(
+              '动画集合',
+            ),
+            children: [
+              buildButton(context, (BuildContext context) {
+                return AnimatedPositionedPage();
+              }, 'AnimatedPositioned页面'),
+            ],
+          )
         ],
       ),
       floatingActionButton: SlideTransition(
@@ -191,6 +205,54 @@ class _HomePageState extends State<HomePage>
             _currentIndex = idx;
           });
         },
+      ),
+      drawer: buildDrawer(),
+    );
+  }
+
+  Drawer buildDrawer() {
+    final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
+    return Drawer(
+      child: Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFF94377F),
+              Color(0xFFF79283),
+            ],
+          ),
+        ),
+        child: Column(
+          children: [
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(40),
+                  image: DecorationImage(
+                    image: AssetImage(
+                      'image/home/default_avator.png',
+                    ),
+                  )),
+            ),
+            Expanded(
+              child: ListView(
+                children: [
+                  ListTile(
+                    title: Text('签到'),
+                    leading: Icon(
+                      Icons.more_vert,
+                      size: 16,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
