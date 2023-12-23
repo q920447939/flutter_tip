@@ -227,19 +227,23 @@ class _HomePageState extends State<HomePage>
         ),
         child: Column(
           children: [
-            Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(40),
-                  image: DecorationImage(
-                    image: AssetImage(
-                      'image/home/default_avator.png',
+            Center(
+              child: Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40),
+                    image: DecorationImage(
+                      image: AssetImage(
+                        'image/home/default_avator.png',
+                      ),
                     ),
-                  )),
+                    color: Colors.grey),
+              ),
             ),
             Expanded(
               child: ListView(
+                shrinkWrap: true,
                 children: [
                   ListTile(
                     title: Text('签到'),
